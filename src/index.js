@@ -16,10 +16,14 @@ function displayCurrentTemperature(response) {
   let humidity = response.data.main.humidity;
   let weather = response.data.weather.description;
   let wind = response.data.wind.speed;
-  let tempSpecial = document.querySelector("#temp-special").innerHTML = temperature;
-  let hum = document.querySelector(".hum").innerHTML = humidity;
-  let breeze = (document.querySelector(".breeze").innerHTML=wind;
-  let description = document.querySelector(".description").innerHTML = weather;
+  let tempSpecial = document.querySelector("#temp-special");
+  tempSpecial.innerHTML = temperature;
+  let hum = document.querySelector(".hum");
+  hum.innerHTML = humidity;
+  let breeze = document.querySelector(".breeze");
+  breeze.innerHTML = wind;
+  let description = document.querySelector(".description");
+  description.innerHTML = weather;
 }
 function showTemperature(city) {
   let apiKey = "2cecc497980f715ab7706e9851e428bb";
@@ -35,7 +39,7 @@ function formatDate(now) {
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday"
+    "Saturday",
   ];
   let hours = now.getHours();
   if (hours < 10) {
@@ -49,8 +53,9 @@ function formatDate(now) {
 }
 function overWrite(event) {
   event.preventDefault();
-  let city = document.querySelector("#city-cast").innerHTML = cityType.value;
-  showCurrentTemperature(city);
+  let citi = document.querySelector("#city-cast");
+  citi.innerHTML = cityType.value;
+  showCurrentTemperature(citi);
 }
 
 let dateToday = document.querySelector("#day-time");
@@ -63,6 +68,5 @@ let discoverCity = document.querySelector(".discover");
 discoverCity.addEventListener("submit", overWrite, showTemperature);
 
 showCurrentTemperature(Paris);
-
 let navigate = document.querySelector(".navigate");
 navigate.addEventListener("click", getCurrentPosition);
